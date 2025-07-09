@@ -1,46 +1,54 @@
+/* Container principal: centraliza e adiciona padding */
 .tables-container {
   margin: 0 auto;
   padding: 2rem;
 }
 
+/* Título principal: tamanho responsivo via clamp */
 .tables-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem); /* entre 1.5rem e 2rem ajustando ao viewport */
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: #fff;
 }
 
+/* Subtítulos das listas */
 .tables-subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #fff
+  color: #fff;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.button-span-group {
-  display: flex;
-  flex-direction: row;
-  gap: 3px; 
-}
-
+/* Área de listas: overflow horizontal para telas pequenas */
 .tables-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  overflow-x: auto;            /* permite scroll se ficar estreito */
+  -webkit-overflow-scrolling: touch;
 }
 
+/* Grid pai contendo duas listas: usa auto-fit para responsividade */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Grupo de botões de ação inline */
+.button-span-group {
+  display: flex;
+  flex-wrap: wrap;             /* quebra em várias linhas se necessário */
+  gap: 0.25rem;
+}
+
+/* Linhas de cabeçalho e dados: layout fluido */
 .table-header,
 .table-row {
   display: grid;
-  /* 5 colunas proporcionais com espaçamento interno */
-  grid-template-columns: 2fr 1fr 1.5fr 1.5fr 2fr;
-  gap: 0.5rem;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr 2fr; /* proporções das colunas */
+  gap: 0.5rem;                  /* espaçamento uniforme */
   padding: 0.75rem 1rem;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -49,37 +57,37 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   color: #fff;
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: border-box;      /* padding incluso na largura total */
 }
 
-/* estilos de header */
+/* Destaque no cabeçalho */
 .table-header {
   font-weight: 600;
   background: rgba(255, 255, 255, 0.35);
 }
 
-/* garante que cada célula tenha mesmo comportamento */
+/* Garante comportamento uniforme em todas as células */
 .table-header > *,
 .table-row > * {
   box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap;         /* sem quebra de linha */
+  overflow: hidden;            /* esconde excesso */
+  text-overflow: ellipsis;     /* exibe "..." no fim */
 }
 
-/* centraliza coluna de ações (última) */
+/* Centraliza coluna de ações (última coluna) */
 .table-header > :last-child,
 .table-row > :last-child {
   display: flex;
   justify-content: center;
 }
 
-/* hover para linhas */
+/* Feedback visual ao passar o mouse sobre linhas */
 .table-row:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* botão de ação */
+/* Botões de ícone: tamanho e sombra interna */
 .icon-button {
   background: transparent;
   margin: 0.3rem 0.1rem;
@@ -90,18 +98,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
+/* Hover suave no botão de ícone */
 .icon-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-
+/* Botão de lançamento: efeito glass inset e responsivo */
 .launch-button {
-  background: transparent;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: clamp(0.75rem, 2vw, 1rem);
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -110,4 +118,40 @@
   justify-content: center;
   box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.3);
   margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* ===== BREAKPOINTS PARA RESOLUÇÕES MENORES ===== */
+
+/* Até 1024px: reduz gap e padding */
+@media (max-width: 1024px) {
+  .tables-container {
+    padding: 1.5rem;
+  }
+  .grid {
+    gap: 0.75rem;
+  }
+  .table-header,
+  .table-row {
+    padding: 0.5rem 0.75rem;
+    gap: 0.4rem;
+  }
+}
+
+/* Até 600px: simplifica layout da tabela */
+@media (max-width: 600px) {
+  /* empilha listas em uma coluna */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  /* esconde colunas menos críticas (3ª coluna de data) */
+  .table-header > :nth-child(3),
+  .table-row > :nth-child(3) {
+    display: none;
+  }
+  /* ajusta proporções restantes */
+  .table-header,
+  .table-row {
+    grid-template-columns: 2fr 1fr 1fr 0.75fr;
+  }
 }
