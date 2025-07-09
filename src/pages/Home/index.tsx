@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "@components/Input";
 import Button from "@components/Button";
-import { Trash2 } from "lucide-react";
+import { Plus, Search, Trash2 } from "lucide-react";
 import "@pages/Home/style.css";
 
 type TableData = {
@@ -32,8 +32,8 @@ export default function Home() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <Button>Buscar</Button>
-        <Button>Adicionar</Button>
+        <Button className="act-button"><Search/></Button>
+        <Button className="act-button"><Plus/></Button>
       </div>
 
       <div className="tables-list">
