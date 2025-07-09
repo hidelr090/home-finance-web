@@ -13,7 +13,39 @@
   flex-direction: column;
   gap: 2rem;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+/* Botão para abrir no mobile */
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  z-index: 1100;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  display: none;
+}
+
+/* Ocultar sidebar em telas pequenas por padrão */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
 }
 
 .sidebar-header {
