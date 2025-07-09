@@ -29,6 +29,7 @@
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@hooks/*": ["hooks/*"],
+      "@assets/*": ["assets/*"],
       "@src/*": ["*"]
     }
   },
