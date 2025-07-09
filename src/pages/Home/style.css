@@ -1,10 +1,12 @@
+/* Container principal */
 .tables-container {
   padding: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* Título da página */
 .tables-title {
   font-size: 2rem;
   font-weight: 600;
@@ -12,22 +14,27 @@
   color: #fff;
 }
 
+/* Barra de busca com botões */
 .tables-search-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 2rem;
 }
 
+/* Lista de tabelas */
 .tables-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
+/* Cabeçalho e linhas seguem mesma estrutura de grid */
 .table-header,
 .table-row {
+  width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 0.5fr;
+  grid-template-columns: 2fr 1fr 1fr 0.75fr;
   padding: 0.75rem 1rem;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -36,13 +43,16 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   color: #fff;
   align-items: center;
+  box-sizing: border-box;
 }
 
+/* Cabeçalho com destaque */
 .table-header {
   font-weight: 600;
   background: rgba(255, 255, 255, 0.35);
 }
 
+/* Botão de ícone */
 .icon-button {
   background: transparent;
   padding: 0.3rem;
@@ -59,22 +69,44 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Botões de ação (Buscar / Adicionar) */
 .act-button {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  padding: 0.75rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .act-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
   color: #764ba2;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 2fr 1fr; /* Nome e Ações */
+  }
+
+  .table-header > span:nth-child(2),
+  .table-header > span:nth-child(3),
+  .table-row > span:nth-child(2),
+  .table-row > span:nth-child(3) {
+    display: none;
+  }
+
+  .tables-search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

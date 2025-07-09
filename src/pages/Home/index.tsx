@@ -41,6 +41,7 @@ export default function Home() {
           <span>Nome</span>
           <span>Criada por</span>
           <span>Criada em</span>
+          <span>Valor Atual</span>
           <span>Ações</span>
         </div>
 
@@ -49,6 +50,7 @@ export default function Home() {
             <span>{table.name}</span>
             <span>{table.createdBy}</span>
             <span>{new Date(table.createdAt).toLocaleDateString()}</span>
+            <span>R$ 1000,00</span>
             <span>
               <Button
                 className="icon-button"
