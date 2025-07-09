@@ -11,10 +11,24 @@ export const Logo = () => (
         <stop offset="0%" stopColor="#667eea" />
         <stop offset="100%" stopColor="#764ba2" />
       </linearGradient>
-      <filter id="glass" x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse">
-        <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#764ba2" floodOpacity="0.3" />
+      <filter
+        id="glass"
+        x="0"
+        y="0"
+        width="64"
+        height="64"
+        filterUnits="userSpaceOnUse"
+      >
+        <feDropShadow
+          dx="0"
+          dy="2"
+          stdDeviation="2"
+          floodColor="#764ba2"
+          floodOpacity="0.3"
+        />
       </filter>
     </defs>
+
     {/* Casa estilizada */}
     <path
       d="M12 30 L32 12 L52 30 V52 H12 Z"
@@ -26,7 +40,8 @@ export const Logo = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    {/* Moeda / círculo */}
+
+    {/* Moeda */}
     <circle
       cx="32"
       cy="40"
@@ -36,12 +51,20 @@ export const Logo = () => (
       fill="none"
       filter="url(#glass)"
     />
-    {/* Símbolo $ estilizado dentro da moeda */}
+
+    {/* Cifrão dentro do círculo */}
     <path
-      d="M32 34 L32 46 M28 36 H36 M28 44 H36"
+      d="M32 32 V48"
       stroke="white"
       strokeWidth="2"
       strokeLinecap="round"
+    />
+    <path
+      d="M36 36 C36 34, 28 34, 28 38 C28 40, 36 40, 36 44 C36 46, 28 46, 28 44"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
     />
   </svg>
 );

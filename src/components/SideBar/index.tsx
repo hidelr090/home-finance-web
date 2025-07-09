@@ -21,7 +21,6 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-header">
         <Logo/>
-        <span className="sidebar-title">Finance</span>
       </div>
 
       <nav className="sidebar-nav">
