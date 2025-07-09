@@ -1,0 +1,6 @@
+.default-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #e0e0e0;
+}

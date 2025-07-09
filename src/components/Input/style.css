@@ -1,0 +1,22 @@
+.default-input {
+  margin-top: 0.25rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.25);
+  color: #222;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.default-input::placeholder {
+  color: #bbb;
+}
+
+.default-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.45);
+  color: #000;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}

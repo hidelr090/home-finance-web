@@ -1,0 +1,48 @@
+/* Aqui vem o vidro líquido: fundo translúcido + blur + borda com leve brilho */
+.default-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.default-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.default-form input {
+  margin-top: 0.25rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.25);
+  color: #222;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.default-form input::placeholder {
+  color: #bbb;
+}
+
+.default-form input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.45);
+  color: #000;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
