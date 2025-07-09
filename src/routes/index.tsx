@@ -7,6 +7,7 @@ import Home from "@pages/Home";
 
 import ProtectedRoute from "@routes/ProtectedRoute";
 import AppLayout from "@layouts/AppLayout";
+import MyTables from "@pages/MyTables";
 
 export const routes: RouteObject[] = [
   {
@@ -23,6 +24,10 @@ export const routes: RouteObject[] = [
             path: "/",
             element: <Home />,
           },
+          {
+            path: "/my-tables",
+            element: <MyTables />
+          }
         ],
       },
     ],
