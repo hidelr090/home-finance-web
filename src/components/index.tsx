@@ -5,3 +5,4 @@ export * from '@components/Input';
 export * from '@components/Form';
 export * from '@components/Label';
 export * from '@components/SideBar';
+export * from '@components/Dropdown';

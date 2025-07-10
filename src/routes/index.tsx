@@ -8,6 +8,7 @@ import Home from "@pages/Home";
 import ProtectedRoute from "@routes/ProtectedRoute";
 import AppLayout from "@layouts/AppLayout";
 import MyTables from "@pages/MyTables";
+import EntryForm from "@pages/EntryForm";
 
 export const routes: RouteObject[] = [
   {
@@ -27,6 +28,10 @@ export const routes: RouteObject[] = [
           {
             path: "/my-tables",
             element: <MyTables />
+          },
+          {
+            path: "/entry-form",
+            element: <EntryForm />
           }
         ],
       },
