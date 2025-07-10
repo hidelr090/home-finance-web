@@ -60,3 +60,8 @@
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
   color: #000;
 }
+
+.dropdown li {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #8d56b9;
+}

@@ -5,3 +5,4 @@ export * from '@pages/NotFound';
 export * from '@pages/Login';
 export * from '@pages/MyTables';
 export * from '@pages/EntryForm';
+export * from '@pages/CreateTable';

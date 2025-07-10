@@ -11,6 +11,7 @@ import MyTables from "@pages/MyTables";
 import EntryForm from "@pages/EntryForm";
 import PublicLayout from "@layouts/PublicLayout";
 import Signup from "@pages/Signup";
+import CreateTable from "@pages/CreateTable";
 
 export const routes: RouteObject[] = [
   {
@@ -44,6 +45,10 @@ export const routes: RouteObject[] = [
             path: "/entry-form",
             element: <EntryForm />,
           },
+          {
+            path: "/create-table",
+            element: <CreateTable />
+          }
         ],
       },
     ],
