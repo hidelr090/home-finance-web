@@ -9,17 +9,28 @@ import ProtectedRoute from "@routes/ProtectedRoute";
 import AppLayout from "@layouts/AppLayout";
 import MyTables from "@pages/MyTables";
 import EntryForm from "@pages/EntryForm";
+import PublicLayout from "@layouts/PublicLayout";
+import Signup from "@pages/Signup";
 
 export const routes: RouteObject[] = [
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    element: <ProtectedRoute />, 
+    element: <PublicLayout />,
     children: [
       {
-        element: <AppLayout />, 
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />
+      }
+    ],
+  },
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        element: <AppLayout />,
         children: [
           {
             path: "/",
@@ -27,12 +38,12 @@ export const routes: RouteObject[] = [
           },
           {
             path: "/my-tables",
-            element: <MyTables />
+            element: <MyTables />,
           },
           {
             path: "/entry-form",
-            element: <EntryForm />
-          }
+            element: <EntryForm />,
+          },
         ],
       },
     ],
