@@ -1,27 +1,35 @@
 import Stepper from "@components/Stepper";
 import { useState } from "react";
 import "@pages/CreateTable/style.css";
-import CategoriesStep from "./CategoriesStep";
 import Button from "@components/Button";
+import CategoriesStep from "@pages/CreateTable/CategoriesStep";
+import ParticipantsStep from "@pages/CreateTable/ParticipantsStep";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateTable() {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
 
-  const steps = ["Categorias", "Participantes", "Confirmação"];
+  const steps = ["Categorias", "Participantes"];
 
   function renderStep(stepIndex: number) {
     switch (stepIndex) {
       case 0:
         return <CategoriesStep />;
       case 1:
-        break;
-        //return <ParticipantsStep />;
-      case 2:
-        break;
-        //return <ConfirmationStep />;
+        return <ParticipantsStep />;
       default:
         return null;
     }
+  }
+
+  function handleNextButton () {
+  if (currentStep >= steps.length - 1) {
+    navigate('/');
+    return;
+  }
+
+  setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
   }
 
   return (
@@ -41,9 +49,7 @@ export default function CreateTable() {
 
           <Button
             className="create-table-next-step-button"
-            onClick={() =>
-              setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))
-            }
+            onClick={handleNextButton}
           >
             {currentStep === steps.length - 1 ? "Finalizar" : "Avançar"}
           </Button>

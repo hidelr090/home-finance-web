@@ -51,7 +51,8 @@
 .create-table-table-row {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
   padding: 0.75rem 1rem;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -61,8 +62,8 @@
   color: #fff;
   align-items: center;
   box-sizing: border-box;
-  gap: 1rem;
 }
+
 
 /* Aplica a todos os inputs que estão nas linhas da tabela */
 .create-table-table-row input {

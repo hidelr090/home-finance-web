@@ -1,5 +1,4 @@
 
-import React from "react";
 import "@components/Stepper/style.css";
 
 type StepperProps = {

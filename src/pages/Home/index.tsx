@@ -3,6 +3,7 @@ import Input from "@components/Input";
 import Button from "@components/Button";
 import { Plus, Search, Trash2 } from "lucide-react";
 import "@pages/Home/style.css";
+import { useNavigate } from "react-router-dom";
 
 type TableData = {
   id: string;
@@ -12,6 +13,7 @@ type TableData = {
 };
 
 export default function Home() {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [tables, setTables] = useState<TableData[]>([
     { id: "1", name: "Contas Mensais", createdBy: "Hidel", createdAt: "2024-07-01" },
@@ -21,6 +23,10 @@ export default function Home() {
   const handleDelete = (id: string) => {
     setTables((prev) => prev.filter((table) => table.id !== id));
   };
+
+  const handlePlusButton = () => {
+    navigate('/create-table')
+  }
 
   return (
     <div className="tables-container">
@@ -33,7 +39,7 @@ export default function Home() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <Button className="act-button"><Search/></Button>
-        <Button className="act-button"><Plus/></Button>
+        <Button className="act-button" onClick={handlePlusButton}><Plus/></Button>
       </div>
 
       <div className="tables-list">

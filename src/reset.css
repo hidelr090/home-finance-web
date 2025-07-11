@@ -6,10 +6,17 @@
   box-sizing: border-box;
 }
 
-body, html, #root {
-  height: 100%;
+/* Global box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Base do documento */
+html, body, #root {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed; /* fixo ao scroll */
 }

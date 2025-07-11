@@ -1,4 +1,5 @@
 import Button from "@components/Button";
+import Dropdown from "@components/Dropdown";
 import "@pages/CreateTable/style.css";
 import { Check, X, Pencil, Trash2, Plus } from "lucide-react";
 import { useState } from "react";
@@ -36,9 +37,14 @@ export default function CategoriesStep() {
   ]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editedRow, setEditedRow] = useState<Partial<TableData>>({});
+  const [importCategory, setImportCategory] = useState<boolean>(false);
 
   const handleDelete = (id: string) => {
     setTables((prev) => prev.filter((table) => table.id !== id));
+  };
+
+  const handleImportFromPreviousTable = () => {
+    setImportCategory(!importCategory);
   };
 
   const startEditing = (table: TableData) => {
@@ -65,7 +71,7 @@ export default function CategoriesStep() {
           <span>Nome</span>
           <span>Criada por</span>
           <span>Criada em</span>
-          <span>Valor Atual</span>
+          <span>Valor Maximo</span>
           <span>Ações</span>
         </div>
 
@@ -167,6 +173,14 @@ export default function CategoriesStep() {
       <Button className="create-table-basic-button-plus">
         <Plus />
       </Button>
+
+      <div style={{ marginTop: "0.75rem"}}>
+        <Dropdown
+          options={["Transporte", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento"]}
+          placeholder={"Importar Categorias de Panilha Anterior"}
+          onSelect={() => handleImportFromPreviousTable()}
+        />
+      </div>
     </>
   );
 }
