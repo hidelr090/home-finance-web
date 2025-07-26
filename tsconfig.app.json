@@ -25,7 +25,9 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@contexts/*": ["contexts/*"],
       "@pages/*": ["pages/*"],
+      "@dtos/*": ["dtos/*"],
       "@layouts/*": ["layouts/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
