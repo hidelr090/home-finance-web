@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { LoginResponseData } from "@dtos/login";
 import type { SignupFormData, SignupResponseData } from "@dtos/signup";
 
 export function mapSignupRequestData (requestData: SignupFormData) {
@@ -27,5 +28,12 @@ export function mapSignupResponseData (responseData: any): SignupResponseData {
     updatedBy: responseData.updated_by,
     deletedAt: responseData.deleted_at,
     deletedBy: responseData.deleted_by,
+  };
+}
+
+export function mapLoginResponseData (responseData: any): LoginResponseData {
+  return {
+    token: responseData.token,
+    refreshToken: responseData.refresh_token,
   };
 }
