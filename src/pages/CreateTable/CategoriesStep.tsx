@@ -3,6 +3,7 @@ import Dropdown from "@components/Dropdown";
 import "@pages/CreateTable/style.css";
 import { Check, X, Pencil, Trash2, Plus } from "lucide-react";
 import { useState } from "react";
+import { v4 } from 'uuid';
 
 type TableData = {
   id: string;
@@ -19,22 +20,7 @@ type TableData = {
 // };
 
 export default function CategoriesStep() {
-  const [tables, setTables] = useState<TableData[]>([
-    {
-      id: "1",
-      name: "Contas Mensais",
-      createdBy: "Hidel",
-      createdAt: "2024-07-01",
-      amount: 1000,
-    },
-    {
-      id: "2",
-      name: "Investimentos",
-      createdBy: "Hidel",
-      createdAt: "2024-07-05",
-      amount: 1000,
-    },
-  ]);
+  const [tables, setTables] = useState<TableData[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editedRow, setEditedRow] = useState<Partial<TableData>>({});
   const [importCategory, setImportCategory] = useState<boolean>(false);
@@ -62,6 +48,18 @@ export default function CategoriesStep() {
       prev.map((t) => (t.id === editingId ? { ...t, ...editedRow } : t))
     );
     cancelEditing();
+  };
+
+  const addCategory = () => {
+    const newCategoryEmpty: TableData = {
+      id: v4(),
+      name: "",
+      createdBy: "Hidel",
+      createdAt: new Date().toISOString(),
+      amount: 0,
+    };
+    setTables([...tables, newCategoryEmpty]);
+    startEditing(newCategoryEmpty);
   };
 
   return (
@@ -170,13 +168,29 @@ export default function CategoriesStep() {
         })}
       </div>
 
-      <Button className="create-table-basic-button-plus">
+      <Button className="create-table-basic-button-plus" onClick={addCategory}>
         <Plus />
       </Button>
 
-      <div style={{ marginTop: "0.75rem"}}>
+      <div style={{ marginTop: "0.75rem" }}>
         <Dropdown
-          options={["Transporte", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento", "Animais de Estimacao", "Investimento"]}
+          options={[
+            "Transporte",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+            "Animais de Estimacao",
+            "Investimento",
+          ]}
           placeholder={"Importar Categorias de Panilha Anterior"}
           onSelect={() => handleImportFromPreviousTable()}
         />
